@@ -1,0 +1,5 @@
+[appserver]
+ip-10-1-1-187.ec2.internal
+
+[local]
+localhost

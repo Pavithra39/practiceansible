@@ -1,0 +1,20 @@
+---
+- hosts: appserver
+  become: yes
+  tasks:
+  - name: install openjdk 11
+    apt:
+      name: java-11.0.17-openjdk.x86_64
+      state: present
+  - name: install tomcat
+    state: present 
+  - name: download jenkins to webapp/
+    get_url:
+        url: https://get.jenkins.io/war-stable/2.375.1/jenkins.war
+        dest:  /opt/tomcat/webapps/jenkins.war
+  - name: enable and start tomcat
+    service: 
+      name: tomcat
+      state: started 
+      enabled: yes 
+  
